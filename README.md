@@ -5,7 +5,7 @@ Note: For AspNetCore see: https://github.com/micro-elements/MicroElements.Swashb
 
 ## Latest Builds, Packages
 [![NuGet](https://img.shields.io/nuget/v/MicroElements.Swashbuckle.FluentValidation.WebApi.svg)](https://www.nuget.org/packages/MicroElements.Swashbuckle.FluentValidation.WebApi/)
-[![Travis](https://img.shields.io/travis/micro-elements/MicroElements.Swashbuckle.FluentValidation.WevApi/master.svg?label=travis%20build)](https://travis-ci.org/micro-elements/MicroElements.Swashbuckle.FluentValidation.WebApi)
+[![Travis](https://img.shields.io/travis/micro-elements/MicroElements.Swashbuckle.FluentValidation.WebApi/master.svg?label=travis%20build)](https://travis-ci.org/micro-elements/MicroElements.Swashbuckle.FluentValidation.WebApi)
 
 ## Usage
 
