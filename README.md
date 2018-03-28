@@ -8,14 +8,69 @@ Use FluentValidation rules instead ComponentModel attributes to define swagger s
 ## Usage
 
 ### 1. Reference packages in your Web Api project:
-```xml
-todo 
-```
 
-### 2. Change Startup.cs
+- Swashbuckle
+- FluentValidation
+- FluentValidation.WebApi
+- MicroElements.Swashbuckle.FluentValidation.WebApi
+
+
+### 2. Modify SwaggerConfig.cs
+
+After you add Swashbuckle package you can find generated SwaggerConfig.cs
+
+1. Comment [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")] (we need to register swagger after FluentValidation in WebApiConfig)
+2. Add registration c.AddFluentValidationRules();
 
 ```csharp
-todo   
+// Commented because we need manual registration in right order
+//[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
+    public class SwaggerConfig
+    {
+        public static void Register()
+        {
+            var thisAssembly = typeof(SwaggerConfig).Assembly;
+
+            GlobalConfiguration.Configuration
+                .EnableSwagger(c =>
+                    {
+                        ...
+                        // Adds FluentValidationRules to swagger
+                        c.AddFluentValidationRules();
+                        ...
+                    }
+                    ...
+
+```
+
+### 3. Modify WebApiConfig.cs
+
+1. Add `FluentValidationModelValidatorProvider.Configure(config);`
+2. Add `SwaggerConfig.Register();`
+
+```csharp
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
+            // Web API configuration and services
+
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            // Adds Fluent validation to WebApi
+            FluentValidationModelValidatorProvider.Configure(config);
+
+            // Registers swagger for WebApi 
+            SwaggerConfig.Register();
+        }
+    }
 ```
 
 ## Sample application

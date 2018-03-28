@@ -18,8 +18,10 @@ namespace AspNetWebApiOld
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Adds Fluent validation to WebApi
             FluentValidationModelValidatorProvider.Configure(config);
 
+            // Registers swagger for WebApi 
             SwaggerConfig.Register();
         }
     }
