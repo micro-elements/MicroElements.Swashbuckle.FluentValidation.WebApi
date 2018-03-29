@@ -76,7 +76,7 @@ After you add Swashbuckle package you can find generated SwaggerConfig.cs
 ```
 
 ## Sample application
-See sample project: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation/tree/master/src/AspNetWebApiOld
+See sample project: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation.WebApi/tree/master/src/AspNetWebApiOld
 
 ## Credits
 
